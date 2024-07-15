@@ -1,6 +1,7 @@
 import json
 import unittest
 from copy import deepcopy
+from pathlib import Path
 from unittest.mock import patch
 from i3pystatus.core.color import ColorRangeModule
 from i3pystatus.buds import Buds, BudsEqualizer, BudsPlacementStatus
@@ -9,7 +10,7 @@ from i3pystatus.buds import Buds, BudsEqualizer, BudsPlacementStatus
 class TestBuds(unittest.TestCase):
     def setUp(self):
         self.buds = Buds()
-        with open('test_buds.json', 'rb') as file:
+        with (Path(__file__).parent / "test_buds.json").open('rb') as file:
             self.payload = json.load(file)
 
     @patch('i3pystatus.buds.run_through_shell')
